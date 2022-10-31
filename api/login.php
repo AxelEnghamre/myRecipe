@@ -14,6 +14,9 @@ if (isset($_POST['email'], $_POST['pwd'])) {
 
     $users = new users;
 
+    // hash pwd
+    $pwd = md5($pwd);
+
     // retrive the user
     $status = $users->getUserFromEmailAndPwd($email, $pwd);
 

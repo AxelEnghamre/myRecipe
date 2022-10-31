@@ -40,4 +40,42 @@ class users extends dataBase
         // if no id then return empty
         return [];
     }
+
+    // get all user properties from email
+    public function getUserFromEmail(string $email): array
+    {
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $email
+        ]);
+
+        $response = $query->fetch();
+
+        // ensure a id
+        if (isset($response['id'])) {
+            return $response;
+        }
+
+        // if no id then return empty
+        return [];
+    }
+
+    // register a user
+    public function register(string $email, string $firstName, string $lastName, $pwd): void
+    {
+        $sql = "INSERT INTO users(
+            email,
+            first_name,
+            last_name,
+            pwd
+        ) VALUES(?,?,?,?)";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $email,
+            $firstName,
+            $lastName,
+            $pwd
+        ]);
+    }
 }

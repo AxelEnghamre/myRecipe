@@ -38,6 +38,8 @@ if ($app->getIsSignedIn()) {
             ?>
         </ul>
         <input type="email" name="email" id="email" placeholder="Email" class="bg-cream placeholder:text-coffee">
+        <input type="text" name="firstName" id="firstName" placeholder="First name" class="bg-cream placeholder:text-coffee">
+        <input type="text" name="lastName" id="lastName" placeholder="Last name" class="bg-cream placeholder:text-coffee">
         <input type="password" name="pwd" id="pwd" placeholder="Password" class="bg-cream placeholder:text-coffee">
         <input type="password" name="pwdRep" id="pwdRep" placeholder="Repeat password" class="bg-cream placeholder:text-coffee">
         <input type="submit" value="register" class="w-full bg-coffee text-cream rounded-lg hover:cursor-pointer">
