@@ -68,21 +68,22 @@ function search(): void
 
             recipes.forEach(recipe => {
                 // if all requerd parameters is proved then create the list element
-                if ('name' in recipe && 'url' in recipe && 'creator' in recipe) {
+                if ('firstName' in recipe && 'lastName' in recipe && 'id' in recipe && 'name' in recipe) {
                     const name = recipe['name'];
-                    const url = recipe['url'];
-                    const creator = recipe['creator'];
+                    const id = recipe['id'];
+                    const firstName = recipe['firstName'];
+                    const lastName = recipe['lastName'];
 
 
                     // list tag
                     const li = document.createElement('li');
-                    li.setAttribute("class", "border-b-solid border-b-2 border-b-black p-1");
+                    li.setAttribute("class", "border-b-solid border-b-2 border-b-coffee p-1");
 
                     // anchor tag
                     const a = document.createElement('a');
-                    a.setAttribute("href", "recipe/?" + recipe['url']);
-                    a.innerText = recipe['name'] + ' made by ' + recipe['creator'];
-                    a.classList.add("w-full");
+                    a.setAttribute("href", "recipe/?" + id);
+                    a.innerText = `${name} made by ${firstName} ${lastName}`;
+                    a.setAttribute("class", "w-full");
 
                     // append the list
                     li.appendChild(a);

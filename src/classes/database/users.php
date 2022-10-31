@@ -61,6 +61,47 @@ class users extends dataBase
         return [];
     }
 
+    // get all users ids by search first_name
+    public function getUsersIdsFromSearchFirstName(string $search): array
+    {
+        $sql = "SELECT id
+                FROM users
+                WHERE first_name LIKE CONCAT(?,'%')";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $search
+        ]);
+
+        $response = $query->fetchAll();
+
+        $ids = array_map(function ($element) {
+            return $element['id'];
+        }, $response);
+
+        return $ids;
+    }
+
+    // get all users ids by search last_name
+    public function getUsersIdsFromSearchLastName(string $search): array
+    {
+        $sql = "SELECT id
+                FROM users
+                WHERE last_name LIKE CONCAT(?,'%')";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $search
+        ]);
+
+        $response = $query->fetchAll();
+
+        $ids = array_map(function ($element) {
+            return $element['id'];
+        }, $response);
+
+        return $ids;
+    }
+
+
     // register a user
     public function register(string $email, string $firstName, string $lastName, $pwd): void
     {
