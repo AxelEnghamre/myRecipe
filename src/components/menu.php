@@ -9,17 +9,17 @@ function menu($isSignedIn = false): void
 
     <nav id="menu" class="w-screen h-screen bg-coffee fixed top-0 left-0 -z-30 overflow-x-hidden overflow-y-scroll flex flex-col justify-center opacity-0 duration-500">
         <ul class="flex flex-col text-cream w-20 gap-10 p-10">
-            <a href=<?= __DIR__ . '/' ?> class="text-5xl hover:scale-125 duration-300">Search</a>
+            <a href=<?= __DIR__ . '../../../' ?> class="text-5xl hover:scale-125 duration-300">Search</a>
 
             <?php
 
             if ($isSignedIn) { ?>
-                <a href=<?= __DIR__ . '/dashoard/' ?> class='text-5xl hover:scale-125 duration-300'>Dashoard</a>
-                <a href=<?= __DIR__ . '/logout/' ?> class="text-2xl hover:scale-125 duration-300">logout</a>
+                <a href=<?= __DIR__ . '../../../dashoard/' ?> class='text-5xl hover:scale-125 duration-300'>Dashoard</a>
+                <a href=<?= __DIR__ . '../../../logout/' ?> class="text-2xl hover:scale-125 duration-300">logout</a>
             <?php
             } else {
             ?>
-                <a href=<?= __DIR__ . '/login/' ?> class="text-2xl hover:scale-125 duration-300">login</a>
+                <a href=<?= __DIR__ . '../../../login/' ?> class="text-2xl hover:scale-125 duration-300">login</a>
             <?php
             }
             ?>
