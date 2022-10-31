@@ -14,7 +14,7 @@ function menu($isSignedIn = false): void
             <?php
 
             if ($isSignedIn) { ?>
-                <a href="/dashoard" class='text-5xl hover:scale-125 duration-300'>Dashoard</a>
+                <a href="/dashboard" class='text-5xl hover:scale-125 duration-300'>Dashoard</a>
                 <a href="/logout" class="text-2xl hover:scale-125 duration-300">logout</a>
             <?php
             } else {
