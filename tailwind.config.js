@@ -5,6 +5,7 @@ module.exports = {
     './index.php',
     './recipe/**/*.{html,js,php}',
     './login/**/*.{html,js,php}',
+    './register/**/*.{html,js,php}',
     './dashboard/**/*.{html,js,php}',
     './edit/**/*.{html,js,php}',
   ],
