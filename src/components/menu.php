@@ -20,6 +20,7 @@ function menu($isSignedIn = false): void
             } else {
             ?>
                 <a href="/login" class="text-2xl hover:scale-125 duration-300">login</a>
+                <a href="/register" class="text-2xl hover:scale-125 duration-300">register</a>
             <?php
             }
             ?>
