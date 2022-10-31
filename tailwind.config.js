@@ -12,6 +12,9 @@ module.exports = {
     extend: {
       colors: {
         'lemon-milk': '#e1eba4',
+        coffee: '#1f2120',
+        cream: '#b1b3b5',
+        warning: '#c24444',
       },
     },
   },
