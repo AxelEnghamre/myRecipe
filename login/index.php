@@ -26,7 +26,7 @@ if ($app->getIsSignedIn()) {
     <title>login</title>
 </head>
 
-<body class="bg-lemon-milk p-2 gap-10 grid place-items-center w-screen min-h-screen">
+<body class="bg-lemon-milk p-4 gap-10 grid place-items-center w-screen min-h-screen">
     <?php menu() ?>
 
     <form action="api/login.php" method="POST" class="flex flex-col gap-2 p-2 bg-cream rounded-xl">

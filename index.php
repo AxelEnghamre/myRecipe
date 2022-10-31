@@ -19,7 +19,7 @@ $app = new app;
     <title>myRecipe</title>
 </head>
 
-<body class="p-2 pt-10 bg-lemon-milk">
+<body class="p-4 pt-6 bg-lemon-milk">
     <?php menu($app->getIsSignedIn()) ?>
     <header class="w-full h-28">
         <h1 class="text-4xl w-fit ml-auto mr-auto">
