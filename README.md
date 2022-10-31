@@ -1,12 +1,14 @@
-INSERT MANDATORY GIF
+<img src="https://media.giphy.com/media/l0EwXZ4H4SXKrCHMQ/giphy.gif" width="100%" />
 
-# Project Title
+# myRecipe
 
-Text about the project and why it exists. This would also be a great place to link the project on One.com.
+A site to create update read and delete recipes.
 
 # Installation
 
-Add the installation instructions.
+This project uses [tailwind](https://tailwindcss.com) therefore to build a new output.css file [node](https://nodejs.dev/en/) is requierd to run a tailwind compiler. This is only needed if the code is updated.
+
+This project needs a mySQL databsae. To connect add a env.php like env.sample.php and insert the values for a new connection.
 
 # Code Review
 
