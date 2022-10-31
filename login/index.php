@@ -37,7 +37,7 @@ if ($app->getIsSignedIn()) {
             }
             ?>
         </ul>
-        <input type="text" name="user" id="user" placeholder="Username" class="bg-cream placeholder:text-coffee">
+        <input type="email" name="email" id="email" placeholder="Email" class="bg-cream placeholder:text-coffee">
         <input type="password" name="pwd" id="pwd" placeholder="Password" class="bg-cream placeholder:text-coffee">
         <input type="submit" value="login" class="w-full bg-coffee text-cream rounded-lg hover:cursor-pointer">
     </form>

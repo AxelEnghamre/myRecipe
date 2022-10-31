@@ -20,13 +20,13 @@ class users extends dataBase
         return $response;
     }
 
-    // get all user properties from name and pwd
-    public function getUserFromNameAndPwd(string $name, string $pwd): array
+    // get all user properties from email and pwd
+    public function getUserFromEmailAndPwd(string $email, string $pwd): array
     {
-        $sql = "SELECT * FROM users WHERE name = ? AND pwd = ?";
+        $sql = "SELECT * FROM users WHERE email = ? AND pwd = ?";
         $query = $this->connect()->prepare($sql);
         $query->execute([
-            $name,
+            $email,
             $pwd
         ]);
 

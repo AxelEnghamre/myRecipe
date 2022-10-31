@@ -5,8 +5,8 @@ require_once(__DIR__ . "./../src/classes/app.php");
 
 $app = new app;
 
-if (isset($_POST['user'], $_POST['pwd'])) {
-    $name = $_POST['user'];
+if (isset($_POST['email'], $_POST['pwd'])) {
+    $email = $_POST['email'];
     $pwd = $_POST['pwd'];
 
 
@@ -15,13 +15,14 @@ if (isset($_POST['user'], $_POST['pwd'])) {
     $users = new users;
 
     // retrive the user
-    $status = $users->getUserFromNameAndPwd($name, $pwd);
+    $status = $users->getUserFromEmailAndPwd($email, $pwd);
 
     // check if the user exists
     if (isset($status['id'])) {
         $_SESSION['isSignedIn'] = true;
         $_SESSION['userId'] = intval($status['id']);
-        $_SESSION['userName'] = strval($status['name']);
+        $_SESSION['userFirstName'] = strval($status['first_name']);
+        $_SESSION['userLastName'] = strval($status['last_name']);
     } else {
         array_push($_SESSION['errors'], "sorry, invalid username or password");
     }

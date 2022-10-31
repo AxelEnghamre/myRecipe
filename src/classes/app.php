@@ -32,7 +32,7 @@ class app
             if ($_SESSION['isSignedIn'] === true) {
                 $this->isSignedIn = true;
                 $this->userFirstName = $_SESSION['userFirstName'];
-                $this->userLastName = $_SESSION['userLasttName'];
+                $this->userLastName = $_SESSION['userLastName'];
                 $this->userId = $_SESSION['userId'];
             }
         } else {
