@@ -31,8 +31,8 @@ class app
             }
         } else {
             $this->isSignedIn = false;
-            $this->userName = null;
-            $this->userId = null;
+            $this->userName = "";
+            $this->userId = 0;
         }
     }
 
