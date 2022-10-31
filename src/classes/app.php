@@ -6,7 +6,8 @@ class app
 {
     private array $errors;
     private bool $isSignedIn;
-    private string $userName;
+    private string $userFirstName;
+    private string $userLastName;
     private int $userId;
 
 
@@ -20,7 +21,7 @@ class app
         //  ensure user status
         $this->signIn();
 
-        // handle errors
+        //  ensure errors
         $this->setErrors();
     }
 
@@ -30,12 +31,14 @@ class app
         if (isset($_SESSION['isSignedIn'])) {
             if ($_SESSION['isSignedIn'] === true) {
                 $this->isSignedIn = true;
-                $this->userName = $_SESSION['userName'];
+                $this->userFirstName = $_SESSION['userFirstName'];
+                $this->userLastName = $_SESSION['userLasttName'];
                 $this->userId = $_SESSION['userId'];
             }
         } else {
             $this->isSignedIn = false;
-            $this->userName = "";
+            $this->userFirstName = "";
+            $this->userLastName = "";
             $this->userId = 0;
         }
     }
@@ -59,9 +62,13 @@ class app
     {
         return $this->isSignedIn;
     }
-    public function getUserName(): string
+    public function getUserFirstName(): string
     {
-        return $this->userName;
+        return $this->userFirstName;
+    }
+    public function getUserLastName(): string
+    {
+        return $this->userLastName;
     }
     public function getUserId(): int
     {
