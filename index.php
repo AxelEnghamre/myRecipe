@@ -1,5 +1,9 @@
 <?php
+require_once(__DIR__ . "/src/classes/app.php");
 require_once(__DIR__ . "/src/components/menu.php");
+require_once(__DIR__ . "/src/components/search.php");
+
+$app = new app;
 
 ?>
 
@@ -15,8 +19,16 @@ require_once(__DIR__ . "/src/components/menu.php");
     <title>myRecipe</title>
 </head>
 
-<body>
-    <?php menu(); ?>
+<body class="p-2 pt-10 bg-lemon-milk">
+    <?php menu() ?>
+    <header class="w-full h-28">
+        <h1 class="text-4xl w-fit ml-auto mr-auto">
+            MyRecipe
+        </h1>
+    </header>
+    <main class="max-w-2xl ml-auto mr-auto">
+        <?php search() ?>
+    </main>
 </body>
 
 </html>

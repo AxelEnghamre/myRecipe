@@ -15,8 +15,8 @@ require_once(__DIR__ . "./../src/components/menu.php");
     <title>login</title>
 </head>
 
-<body>
-    <?php menu(); ?>
+<body class="p-2 pt-10 bg-lemon-milk">
+    <?php menu() ?>
 </body>
 
 </html>
