@@ -32,6 +32,12 @@ class users extends dataBase
 
         $response = $query->fetch();
 
-        return $response;
+        // ensure a id
+        if (isset($response['id'])) {
+            return $response;
+        }
+
+        // if no id then return empty
+        return [];
     }
 }
