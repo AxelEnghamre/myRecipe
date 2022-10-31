@@ -6,7 +6,7 @@ A site to create update read and delete recipes.
 
 # Installation
 
-This project uses [tailwind](https://tailwindcss.com) therefore to build a new output.css file [node](https://nodejs.dev/en/) is requierd to run a tailwind compiler. This is only needed if the code is updated.
+This project uses [tailwind](https://tailwindcss.com) therefore to build a new output.css file [node](https://nodejs.dev/en/) is requierd to run a tailwind compiler.
 
 This project needs a mySQL databsae. To connect add a env.php like env.sample.php and insert the values for a new connection.
 
