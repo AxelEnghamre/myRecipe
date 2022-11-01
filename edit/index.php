@@ -4,6 +4,7 @@ declare(strict_types=1);
 require_once(__DIR__ . "./../src/classes/app.php");
 require_once(__DIR__ . "./../src/components/menu.php");
 require_once(__DIR__ . "./../src/classes/database/recipes.php");
+require_once(__DIR__ . "./../src/classes/database/ingredients.php");
 
 
 $app = new app;
@@ -23,6 +24,7 @@ if (!isset($_GET['recipe_id'])) {
 $id = intval($_GET['recipe_id']);
 
 $recipes = new recipes;
+$ingredients = new ingredients;
 
 // retrive the recipe
 $recipe = $recipes->getRecipe($id);
@@ -33,6 +35,8 @@ if (isset($recipe['id'])) {
         header("Location: ../dashboard");
         exit;
     }
+
+    $ingredientsArray = $ingredients->getIngredientsFromRecipeId($recipe['id']);
 } else {
     // recipe does not exist
     header("Location: ../dashboard");
@@ -53,12 +57,12 @@ if (isset($recipe['id'])) {
     <title>edit</title>
 </head>
 
-<body class="bg-lemon-milk p-4 min-h-sceen w-screen grid place-content-center">
-    <?php menu($app->getIsSignedIn()) ?>
-    <a href="/dashboard/" class="fixed top-8 left-4 text-lg">exit</a>
+<body class="bg-lemon-milk p-4 pt-16">
+    <a href="/dashboard/" class="fixed top-8 right-4 text-lg">exit</a>
 
-    <main class="flex flex-col max-w-2xl">
-        <form action="/api/recipe/update.php" method="post" class="flex flex-col items-stretch">
+    <section>
+        <h2>Recipe</h2>
+        <form action="/api/recipe/update.php" method="post" class="w-full flex flex-col gap-4">
             <input type="hidden" name="recipeId" value=<?= $recipe['id'] ?>>
             <label for="name">Name</label>
             <input type="text" name="name" id="name" value="<?= $recipe['name'] ?>">
@@ -72,11 +76,55 @@ if (isset($recipe['id'])) {
             <textarea type="textarea" name="description" id="description">
             <?= $recipe['description'] ?>
             </textarea>
-            <!-- TODO add ingredients and their units and all the steps -->
 
             <input type="submit" value="save" class=" w-14 h-8 bg-white rounded-xl grid place-items-center hover:cursor-pointer">
         </form>
-    </main>
+    </section>
+
+    <section>
+        <h2>Ingredients</h2>
+        <ul>
+            <?php
+            foreach ($ingredientsArray as $ingredient) {
+            ?>
+                <li>
+                    <form action="/api/ingredient/update.php" method="post">
+                        <input type="hidden" name="ingredientId" value=<?= $ingredient['id'] ?>>
+
+                        <label for="ingredient">ingredient</label>
+                        <input type="text" name="ingredient" value="<?= $ingredient['ingredient'] ?>">
+
+                        <label for="amount">amount</label>
+                        <input type="number" name="amount" value="<?= $ingredient['amount'] ?>">
+
+                        <label for="unit">unit</label>
+                        <input type="text" name="unit" value="<?= $ingredient['unit'] ?>">
+
+                        <input type="submit" value="save">
+
+                        <a href="/api/ingerdient/delete.php?ingredientId=<?= $ingredient['id'] ?>">delete</a>
+                    </form>
+                </li>
+            <?php
+            }
+            ?>
+        </ul>
+
+        <form action="/api/ingerdient/create.php" method="post">
+            <input type="hidden" name="recipeId" value=<?= $recipe['id'] ?>>
+
+            <label for="ingredient">ingredient</label>
+            <input type="text" name="ingredient" placeholder="Ingredient name">
+
+            <label for="amount">amount</label>
+            <input type="number" name="amount" placeholder="Amount">
+
+            <label for="unit">unit</label>
+            <input type="text" name="unit" placeholder="Unit">
+
+            <input type="submit" value="add ingredient">
+        </form>
+    </section>
 
 </body>
 
