@@ -17,7 +17,11 @@ class recipes extends dataBase
 
         $response = $query->fetch();
 
-        return $response;
+        if (isset($response['id'])) {
+            return $response;
+        }
+
+        return [];
     }
 
     // get all recipes ids from user_id
@@ -73,6 +77,24 @@ class recipes extends dataBase
             $shortDescription,
             $description,
             $user_id
+        ]);
+    }
+
+    // update a recipe
+    public function update(int $id, string $name, string $shortDescription, string $description): void
+    {
+        $sql = "UPDATE recipes
+                SET
+                name = ?,
+                short_description = ?,
+                description = ?
+                WHERE id = ?";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $name,
+            $shortDescription,
+            $description,
+            $id
         ]);
     }
 
