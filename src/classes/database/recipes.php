@@ -56,4 +56,32 @@ class recipes extends dataBase
 
         return $ids;
     }
+
+    // create a recipe
+    public function create(string $name, string $shortDescription, string $description, int $user_id): void
+    {
+        $sql = "INSERT INTO recipes
+                (name,
+                short_description,
+                description,
+                user_id)
+                VALUES(?,?,?,?)";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $name,
+            $shortDescription,
+            $description,
+            $user_id
+        ]);
+    }
+
+    // delete a recipe
+    public function delete(int $id): void
+    {
+        $sql = "DELETE FROM recipes WHERE id = ?";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $id
+        ]);
+    }
 }

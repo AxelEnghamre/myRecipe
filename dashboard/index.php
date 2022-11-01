@@ -38,6 +38,20 @@ $userRecipes = array_map(function ($id) use ($recipes) {
     <?php menu($app->getIsSignedIn()) ?>
 
     <section>
+        <ul>
+            <?php
+            foreach ($app->getErrors() as $error) {
+            ?>
+                <li>
+                    <?= $error ?>
+                </li>
+            <?php
+            }
+            ?>
+        </ul>
+    </section>
+
+    <section>
         <h1 class="text-4xl">Dashboard</h1>
         <h3>Welcome <?= $app->getUserFirstName() ?> <?= $app->getUserLastName() ?></h3>
     </section>
@@ -50,7 +64,7 @@ $userRecipes = array_map(function ($id) use ($recipes) {
             ?>
                 <li class="w-full flex flex-row gap-4 content-center">
                     <a href="/edit/?recipe_id=<?= $recipe['id'] ?>" class="w-14 h-8 bg-cream rounded-xl grid place-items-center">edit</a>
-                    <a href="/api/deleteRecipe.php?recipe_id=<?= $recipe['id'] ?>" class="w-14 h-8 bg-warning rounded-xl grid place-items-center">delete</a>
+                    <a href="/api/recipe/delete.php?recipe_id=<?= $recipe['id'] ?>" class="w-14 h-8 bg-warning rounded-xl grid place-items-center">delete</a>
                     <p class="grid place-content-center"><?= $recipe['name'] ?></p>
                 </li>
             <?php
@@ -61,7 +75,7 @@ $userRecipes = array_map(function ($id) use ($recipes) {
 
     <section>
         <h2 class="text-2xl">Create a Recipe</h2>
-        <form action="/api/createRecipe.php" method="POST" class="w-full flex flex-col gap-4">
+        <form action="/api/recipe/create.php" method="POST" class="w-full flex flex-col gap-4">
             <section class="w-full flex flex-col gap-1">
                 <label for="name">Name</label>
                 <input type="text" name="name" id="name" placeholder="Recipe name" required>
