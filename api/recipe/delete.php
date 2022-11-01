@@ -10,8 +10,10 @@ if (isset($_GET['recipe_id']) && $app->getIsSignedIn()) {
     $id = intval($_GET['recipe_id']);
 
     require_once(__DIR__ . "./../../src/classes/database/recipes.php");
+    require_once(__DIR__ . "./../../src/classes/database/ingredients.php");
 
     $recipes = new recipes;
+    $ingredients = new ingredients;
 
     $recipe = $recipes->getRecipe($id);
 
@@ -19,7 +21,7 @@ if (isset($_GET['recipe_id']) && $app->getIsSignedIn()) {
         if ($recipe['user_id'] === $app->getUserId()) {
             // delete recipe
             // needs to remove steps
-            // needs to remove recipesIngredients
+            $ingredients->deleteIngredientsFromRecipeId($id);
             $recipes->delete($id);
         } else {
             array_push($_SESSION['errors'], "you don't own the recipe");
