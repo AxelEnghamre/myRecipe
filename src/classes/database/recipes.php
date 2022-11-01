@@ -38,6 +38,7 @@ class recipes extends dataBase
         return $ids;
     }
 
+    // get all found ids by searching name
     public function getRecipesIdsFromSearchName(string $search): array
     {
         $sql = "SELECT id
