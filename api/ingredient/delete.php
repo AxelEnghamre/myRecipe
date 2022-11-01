@@ -18,11 +18,13 @@ if (isset($_GET['ingredientId']) && $app->getIsSignedIn()) {
     $ingredient = $ingredients->getIngredient($id);
 
     if (isset($ingredient['id'])) {
-        $recipe = $recipes->getRecipe($ingredient['id']);
+        $recipe = $recipes->getRecipe($ingredient['recipe_id']);
 
         if (isset($recipe['id'])) {
             if ($recipe['user_id'] === $app->getUserId()) {
                 $ingredients->delete($id);
+                header("Location: ../../edit?recipe_id=" . $ingredient['recipe_id']);
+                exit;
             } else {
                 array_push($_SESSION['errors'], "you don't own the recipe");
             }

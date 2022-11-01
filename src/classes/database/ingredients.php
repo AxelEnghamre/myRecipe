@@ -62,6 +62,24 @@ class ingredients extends dataBase
         ]);
     }
 
+    // create a ingredient
+    public function create(string $ingredient, string $amount, string $unit, int $recipe_id): void
+    {
+        $sql = "INSERT INTO ingredients
+        (ingredient,
+        amount,
+        unit,
+        recipe_id)
+        VALUES(?,?,?,?)";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $ingredient,
+            $amount,
+            $unit,
+            $recipe_id
+        ]);
+    }
+
     // update a ingredient
     public function update(int $id, string $ingredient, string $amount, string $unit): void
     {

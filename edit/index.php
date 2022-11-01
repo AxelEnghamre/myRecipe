@@ -68,14 +68,10 @@ if (isset($recipe['id'])) {
             <input type="text" name="name" id="name" value="<?= $recipe['name'] ?>">
 
             <label for="shortDescription">Short description</label>
-            <textarea type="textarea" name="shortDescription" id="short_description">
-            <?= $recipe['short_description'] ?>
-            </textarea>
+            <textarea type="textarea" name="shortDescription" id="short_description"><?= $recipe['short_description'] ?></textarea>
 
             <label for="description">Description</label>
-            <textarea type="textarea" name="description" id="description">
-            <?= $recipe['description'] ?>
-            </textarea>
+            <textarea type="textarea" name="description" id="description"><?= $recipe['description'] ?></textarea>
 
             <input type="submit" value="save" class=" w-14 h-8 bg-white rounded-xl grid place-items-center hover:cursor-pointer">
         </form>
@@ -83,6 +79,21 @@ if (isset($recipe['id'])) {
 
     <section>
         <h2>Ingredients</h2>
+        <form action="/api/ingredient/create.php" method="post">
+            <input type="hidden" name="recipeId" value=<?= $recipe['id'] ?>>
+
+            <label for="ingredient">ingredient</label>
+            <input type="text" name="ingredient" placeholder="Ingredient name">
+
+            <label for="amount">amount</label>
+            <input type="number" name="amount" placeholder="Amount">
+
+            <label for="unit">unit</label>
+            <input type="text" name="unit" placeholder="Unit">
+
+            <input type="submit" value="add ingredient">
+        </form>
+
         <ul>
             <?php
             foreach ($ingredientsArray as $ingredient) {
@@ -102,7 +113,7 @@ if (isset($recipe['id'])) {
 
                         <input type="submit" value="save">
 
-                        <a href="/api/ingerdient/delete.php?ingredientId=<?= $ingredient['id'] ?>">delete</a>
+                        <a href="/api/ingredient/delete.php?ingredientId=<?= $ingredient['id'] ?>">delete</a>
                     </form>
                 </li>
             <?php
@@ -110,20 +121,6 @@ if (isset($recipe['id'])) {
             ?>
         </ul>
 
-        <form action="/api/ingerdient/create.php" method="post">
-            <input type="hidden" name="recipeId" value=<?= $recipe['id'] ?>>
-
-            <label for="ingredient">ingredient</label>
-            <input type="text" name="ingredient" placeholder="Ingredient name">
-
-            <label for="amount">amount</label>
-            <input type="number" name="amount" placeholder="Amount">
-
-            <label for="unit">unit</label>
-            <input type="text" name="unit" placeholder="Unit">
-
-            <input type="submit" value="add ingredient">
-        </form>
     </section>
 
 </body>
