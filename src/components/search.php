@@ -81,7 +81,7 @@ function search(): void
 
                     // anchor tag
                     const a = document.createElement('a');
-                    a.setAttribute("href", "recipe/?" + id);
+                    a.setAttribute("href", "recipe/?recipe_id=" + id);
                     a.innerText = `${name} made by ${firstName} ${lastName}`;
                     a.setAttribute("class", "w-full");
 
