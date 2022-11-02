@@ -65,6 +65,24 @@ class steps extends dataBase
         ]);
     }
 
+    // create a step
+    public function create(string $step, string $details, int $orderIndex, int $recipeId): void
+    {
+        $sql = "INSERT INTO steps
+        (step,
+        details,
+        order_index,
+        recipe_id)
+        VALUES(?,?,?,?)";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $step,
+            $details,
+            $orderIndex,
+            $recipeId
+        ]);
+    }
+
     // update a step
     public function update(int $id, string $step, string $details, string $orderIndex): void
     {

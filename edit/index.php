@@ -132,16 +132,16 @@ if (isset($recipe['id'])) {
         <form action="/api/step/create.php" method="post">
             <input type="hidden" name="recipeId" value=<?= $recipe['id'] ?>>
 
-            <label for="ingredient">ingredient</label>
-            <input type="text" name="ingredient" placeholder="Ingredient name">
+            <label for="step">step</label>
+            <input type="text" name="step" placeholder="Step">
 
-            <label for="amount">amount</label>
-            <input type="number" name="amount" placeholder="Amount">
+            <label for="details">details</label>
+            <input type="text" name="details" placeholder="Step detail">
 
-            <label for="unit">unit</label>
-            <input type="text" name="unit" placeholder="Unit">
+            <label for="orderindex">order</label>
+            <input type="number" name="orderIndex" placeholder="Step order">
 
-            <input type="submit" value="add ingredient">
+            <input type="submit" value="add step">
         </form>
 
         <ul>

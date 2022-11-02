@@ -63,7 +63,7 @@ class ingredients extends dataBase
     }
 
     // create a ingredient
-    public function create(string $ingredient, string $amount, string $unit, int $recipe_id): void
+    public function create(string $ingredient, string $amount, string $unit, int $recipeId): void
     {
         $sql = "INSERT INTO ingredients
         (ingredient,
@@ -76,7 +76,7 @@ class ingredients extends dataBase
             $ingredient,
             $amount,
             $unit,
-            $recipe_id
+            $recipeId
         ]);
     }
 
