@@ -23,7 +23,7 @@ if (isset($_POST['search'])) {
 
     // this array is associative
     $idsFoundByUserIds = array_map(function ($userId) use ($recipes) {
-        $idsFoundByUserId = $recipes->getRecipesIdsFromUserId($userId);
+        $idsFoundByUserId = $recipes->getRecipesIdsFromUserId(intval($userId));
         return $idsFoundByUserId;
     }, $foundUserIds);
     // make the array one dimention
@@ -39,12 +39,12 @@ if (isset($_POST['search'])) {
 
     //  retreive recipes
     $foundRecipes = array_map(function ($recipeId) use ($recipes) {
-        return $recipes->getRecipe($recipeId);
+        return $recipes->getRecipe(intval($recipeId));
     }, $foundRecipeIds);
 
     // map the recipes to correct format response
     $response = array_map(function ($recipe) use ($users) {
-        $user = $users->getUser($recipe['user_id']);
+        $user = $users->getUser(intval($recipe['user_id']));
         return [
             'id' => $recipe['id'],
             'name' => $recipe['name'],

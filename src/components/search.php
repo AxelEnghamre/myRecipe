@@ -36,7 +36,7 @@ function search(): void
                 searchformData.append('search', value);
 
                 // fetch the serach api with the search data
-                const response = await fetch("/api/search.php", {
+                const response = await fetch("./api/search.php", {
                     method: 'POST',
                     body: searchformData
                 });
