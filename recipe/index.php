@@ -1,17 +1,20 @@
 <?php
 
 declare(strict_types=1);
+require_once(__DIR__ . "./../src/classes/app.php");
+require_once(__DIR__ . "./../src/components/menu.php");
+$app = new app;
 
 if (isset($_GET['recipe_id'])) {
-    require_once('../src/classes/recipes.php');
-    require_once('../src/classes/steps.php');
-    require_once('../src/classes/ingredients.php');
-    require_once('../src/classes/users.php');
+    require_once(__DIR__ . "./../src/classes/database/recipes.php");
+    require_once(__DIR__ . "./../src/classes/database/steps.php");
+    require_once(__DIR__ . "./../src/classes/database/ingredients.php");
+    require_once(__DIR__ . "./../src/classes/database/users.php");
 
     $urlId = intval($_GET['recipe_id']);
 
     // Recipes DB connection
-    $ecipes = new recipes;
+    $recipes = new recipes;
     $ingredients = new ingredients;
     $steps = new steps;
     $users = new users;
@@ -35,7 +38,9 @@ if (isset($_GET['recipe_id'])) {
         $ingredientsArray = $ingredients->getIngredientsFromRecipeId($recipeId);
 
         // Get owners name
-        //$owner = $users->getUserName($ownerId);
+        $owner = $users->getUser($ownerId);
+        $firstName = $owner['first_name'];
+        $lastName = $owner['last_name'];
     } else {
         //TODO direct to 505
         // FOR NOW
@@ -65,6 +70,7 @@ if (isset($_GET['recipe_id'])) {
 </head>
 
 <body class="bg-lemon-milk p-4">
+    <?php menu($app->getIsSignedIn()) ?>
     <header class="mb-12">
         <h1 class="text-4xl">
             <?= $title ?>
@@ -76,9 +82,7 @@ if (isset($_GET['recipe_id'])) {
     </header>
 
     <main class="max-w-2xl min-h-screen ml-auto mr-auto flex flex-col gap-12">
-        <p>
-            <?= $description ?>
-        </p>
+        <p><?= nl2br($description) ?></p>
 
         <article>
             <h2 class="text-2xl">
@@ -113,7 +117,9 @@ if (isset($_GET['recipe_id'])) {
     </main>
 
     <footer>
-
+        <h2 class="text-xl">
+            Created By <?= "$firstName $lastName" ?>
+        </h2>
     </footer>
 </body>
 
