@@ -8,7 +8,7 @@ function search(): void
 ?>
     <form id="searchForm" method="post" class="w-full">
         <input type="search" name="search" id="search" placeholder="search..." class="w-full h-16 p-8 rounded-xl text-xl bg-cream placeholder:text-coffee">
-        <ul id="searchResaultList" class="w-full mt-16 flex flex-col gap-12 p-12 bg-cream rounded-xl">
+        <ul id="searchResaultList" class="w-full mt-16 flex flex-col gap-1 bg-cream rounded-xl">
 
         </ul>
     </form>
@@ -77,7 +77,7 @@ function search(): void
 
                     // list tag
                     const li = document.createElement('li');
-                    li.setAttribute("class", "border-b-solid border-b-2 border-b-coffee p-1");
+                    li.setAttribute("class", "border-b-solid border-b-2 border-b-coffee p-1 m-12");
 
                     // anchor tag
                     const a = document.createElement('a');
