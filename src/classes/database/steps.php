@@ -11,7 +11,9 @@ class steps extends dataBase
     // get all steps based on recipe id
     public function getStepsFromRecipeId(int $recipeId): array
     {
-        $sql = "SELECT * FROM steps WHERE recipe_id = ?";
+        $sql = "SELECT * FROM steps
+                WHERE recipe_id = ?
+                ORDER BY order_index ASC";
         $query = $this->connect()->prepare($sql);
         $query->execute([
             $recipeId
