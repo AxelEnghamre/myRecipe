@@ -26,21 +26,23 @@ if ($app->getIsSignedIn()) {
     <title>login</title>
 </head>
 
-<body class="bg-lemon-milk p-4 gap-10 grid place-items-center w-screen min-h-screen">
+<body class="bg-lemon-milk p-4">
     <?php menu() ?>
 
-    <form action="api/login.php" method="POST" class="flex flex-col gap-2 p-2 bg-cream rounded-xl">
-        <ul class="w-full flex flex-col items-center text-warning">
-            <?php
-            foreach ($app->getErrors() as $error) {
-                echo "<li>$error</li>";
-            }
-            ?>
-        </ul>
-        <input type="email" name="email" id="email" placeholder="Email" class="bg-cream placeholder:text-coffee">
-        <input type="password" name="pwd" id="pwd" placeholder="Password" class="bg-cream placeholder:text-coffee">
-        <input type="submit" value="login" class="w-full bg-coffee text-cream rounded-lg hover:cursor-pointer">
-    </form>
+    <main class="max-w-2xl min-h-screen flex flex-col mx-auto justify-center">
+        <form action="api/login.php" method="POST" class="flex flex-col gap-2 p-2 bg-cream rounded-xl w-full">
+            <ul class="w-full flex flex-col items-center text-warning">
+                <?php
+                foreach ($app->getErrors() as $error) {
+                    echo "<li>$error</li>";
+                }
+                ?>
+            </ul>
+            <input type="email" name="email" id="email" placeholder="Email" class="bg-cream placeholder:text-coffee">
+            <input type="password" name="pwd" id="pwd" placeholder="Password" class="bg-cream placeholder:text-coffee">
+            <input type="submit" value="login" class="w-full h-8 bg-coffee text-cream rounded-lg hover:cursor-pointer">
+        </form>
+    </main>
 </body>
 
 </html>
