@@ -45,6 +45,26 @@ class steps extends dataBase
         return [];
     }
 
+    // delete all steps based on recipe id
+    public function deleteStepsFromRecipeId(int $recipeId): void
+    {
+        $sql = "DELETE FROM steps WHERE recipe_id = ?";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $recipeId
+        ]);
+    }
+
+    // delete a specific step
+    public function delete(int $id): void
+    {
+        $sql = "DELETE FROM steps WHERE id = ?";
+        $query = $this->connect()->prepare($sql);
+        $query->execute([
+            $id
+        ]);
+    }
+
     // update a step
     public function update(int $id, string $step, string $details, string $orderIndex): void
     {

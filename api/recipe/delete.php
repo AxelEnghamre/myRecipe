@@ -11,16 +11,18 @@ if (isset($_GET['recipe_id']) && $app->getIsSignedIn()) {
 
     require_once(__DIR__ . "./../../src/classes/database/recipes.php");
     require_once(__DIR__ . "./../../src/classes/database/ingredients.php");
+    require_once(__DIR__ . "./../../src/classes/database/steps.php");
 
     $recipes = new recipes;
     $ingredients = new ingredients;
+    $steps = new steps;
 
     $recipe = $recipes->getRecipe($id);
 
     if (isset($recipe['id'])) {
         if ($recipe['user_id'] === $app->getUserId()) {
             // delete recipe
-            // needs to remove steps
+            $steps->deleteStepsFromRecipeId($id);
             $ingredients->deleteIngredientsFromRecipeId($id);
             $recipes->delete($id);
         } else {
