@@ -150,7 +150,7 @@ if (isset($recipe['id'])) {
             ?>
                 <li>
                     <form action="/api/step/update.php" method="post">
-                        <input type="hidden" name="ingredientId" value=<?= $step['id'] ?>>
+                        <input type="hidden" name="stepId" value=<?= $step['id'] ?>>
 
                         <label for="step">step</label>
                         <input type="text" name="step" value="<?= $step['step'] ?>">
