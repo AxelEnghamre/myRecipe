@@ -5,6 +5,7 @@ require_once(__DIR__ . "./../src/classes/app.php");
 require_once(__DIR__ . "./../src/components/menu.php");
 require_once(__DIR__ . "./../src/classes/database/recipes.php");
 require_once(__DIR__ . "./../src/classes/database/ingredients.php");
+require_once(__DIR__ . "./../src/classes/database/steps.php");
 
 
 $app = new app;
@@ -25,6 +26,7 @@ $id = intval($_GET['recipe_id']);
 
 $recipes = new recipes;
 $ingredients = new ingredients;
+$steps = new steps;
 
 // retrive the recipe
 $recipe = $recipes->getRecipe($id);
@@ -37,6 +39,7 @@ if (isset($recipe['id'])) {
     }
 
     $ingredientsArray = $ingredients->getIngredientsFromRecipeId($recipe['id']);
+    $stepsArray = $steps->getStepsFromRecipeId($recipe['id']);
 } else {
     // recipe does not exist
     header("Location: ../dashboard");
@@ -114,6 +117,53 @@ if (isset($recipe['id'])) {
                         <input type="submit" value="save">
 
                         <a href="/api/ingredient/delete.php?ingredientId=<?= $ingredient['id'] ?>">delete</a>
+                    </form>
+                </li>
+            <?php
+            }
+            ?>
+        </ul>
+
+    </section>
+
+
+    <section>
+        <h2>Steps</h2>
+        <form action="/api/step/create.php" method="post">
+            <input type="hidden" name="recipeId" value=<?= $recipe['id'] ?>>
+
+            <label for="ingredient">ingredient</label>
+            <input type="text" name="ingredient" placeholder="Ingredient name">
+
+            <label for="amount">amount</label>
+            <input type="number" name="amount" placeholder="Amount">
+
+            <label for="unit">unit</label>
+            <input type="text" name="unit" placeholder="Unit">
+
+            <input type="submit" value="add ingredient">
+        </form>
+
+        <ul>
+            <?php
+            foreach ($stepsArray as $step) {
+            ?>
+                <li>
+                    <form action="/api/step/update.php" method="post">
+                        <input type="hidden" name="ingredientId" value=<?= $step['id'] ?>>
+
+                        <label for="step">step</label>
+                        <input type="text" name="step" value="<?= $step['step'] ?>">
+
+                        <label for="details">details</label>
+                        <input type="text" name="details" value="<?= $step['details'] ?>">
+
+                        <label for="orderIndex">order</label>
+                        <input type="number" name="orderIndex" value="<?= $step['order_index'] ?>">
+
+                        <input type="submit" value="save">
+
+                        <a href="/api/step/delete.php?stepId=<?= $step['id'] ?>">delete</a>
                     </form>
                 </li>
             <?php
