@@ -6,11 +6,11 @@ declare(strict_types=1);
 function updateIngredients(array $ingredientsArray): void
 {
 ?>
-    <ul class="w-full flex flex-col gap-3">
+    <ul class="w-full flex flex-col gap-3 items-center">
         <?php
         foreach ($ingredientsArray as $ingredient) {
         ?>
-            <li class="w-full">
+            <li class="max-w-xl">
                 <form action="/api/ingredient/update.php" method="post" class="w-full flex flex-col gap-4 bg-coffee p-4 rounded-xl text-cream overflow-hidden">
                     <input type="hidden" name="ingredientId" value=<?= $ingredient['id'] ?>>
 
