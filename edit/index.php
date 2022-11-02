@@ -66,19 +66,19 @@ if (isset($recipe['id'])) {
     <title>edit</title>
 </head>
 
-<body class="bg-lemon-milk p-4 pt-6">
-    <a href="/dashboard/" class="fixed top-6 right-4 text-xl text-warning z-50">exit</a>
+<body class="bg-lemon-milk p-4 pt-6 text-coffee">
+    <a href="/dashboard/" class="fixed z-50 top-4 right-4 w-14 h-14 flex flex-col justify-center items-center gap-3 group bg-coffee rounded-xl hover:cursor-pointer text-warning">exit</a>
 
-    <main class="max-w-2xl ml-auto mr-auto flex flex-col gap-10">
+    <main class=" max-w-2xl ml-auto mr-auto flex flex-col gap-10">
         <h1 class="text-3xl">Edit</h1>
-        <section>
+        <section class="flex flex-col gap-6">
             <h2 class="text-2xl">Recipe</h2>
             <?php
             updateRecipe($recipe);
             ?>
         </section>
 
-        <section>
+        <section class="flex flex-col gap-6">
             <h2 class="text-2xl">Ingredients</h2>
             <?php
             createIngredient($recipe);
@@ -87,7 +87,7 @@ if (isset($recipe['id'])) {
         </section>
 
 
-        <section>
+        <section class="flex flex-col gap-6">
             <h2 class="text-2xl">Steps</h2>
             <?php
             createStep($recipe);
