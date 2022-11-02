@@ -20,7 +20,7 @@ if (isset($_GET['recipe_id']) && $app->getIsSignedIn()) {
     $recipe = $recipes->getRecipe($id);
 
     if (isset($recipe['id'])) {
-        if ($recipe['user_id'] === $app->getUserId()) {
+        if (intval($recipe['user_id']) === $app->getUserId()) {
             // delete recipe
             $steps->deleteStepsFromRecipeId($id);
             $ingredients->deleteIngredientsFromRecipeId($id);

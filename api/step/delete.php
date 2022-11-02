@@ -18,10 +18,10 @@ if (isset($_GET['stepId']) && $app->getIsSignedIn()) {
     $step = $steps->getStep($id);
 
     if (isset($step['id'])) {
-        $recipe = $recipes->getRecipe($step['recipe_id']);
+        $recipe = $recipes->getRecipe(intval($step['recipe_id']));
 
         if (isset($recipe['id'])) {
-            if ($recipe['user_id'] === $app->getUserId()) {
+            if (intval($recipe['user_id']) === $app->getUserId()) {
                 $steps->delete($id);
                 header("Location: ../../edit?recipe_id=" . $recipe['id']);
                 exit;

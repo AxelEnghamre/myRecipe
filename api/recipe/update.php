@@ -19,7 +19,7 @@ if (isset($_POST['recipeId'], $_POST['name'], $_POST['shortDescription'], $_POST
     $recipe = $recipes->getRecipe($id);
 
     if (isset($recipe['id'])) {
-        if ($recipe['user_id'] === $app->getUserId()) {
+        if (intval($recipe['user_id']) === $app->getUserId()) {
             $recipes->update($id, $name, $shortDescription, $description);
             header("Location: ../../edit?recipe_id=$id");
             exit;

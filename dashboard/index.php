@@ -18,7 +18,7 @@ $recipes = new recipes;
 
 $userRecipesIds = $recipes->getRecipesIdsFromUserId($app->getUserId());
 $userRecipes = array_map(function ($id) use ($recipes) {
-    return $recipes->getRecipe($id);
+    return $recipes->getRecipe(intval($id));
 }, $userRecipesIds);
 ?>
 

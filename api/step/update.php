@@ -21,9 +21,9 @@ if (isset($_POST['stepId'], $_POST['step'], $_POST['details'], $_POST['orderInde
     $step = $steps->getStep($id);
 
     if (isset($step['id'])) {
-        $recipe = $recipes->getRecipe($step['recipe_id']);
+        $recipe = $recipes->getRecipe(intval($step['recipe_id']));
 
-        if ($recipe['user_id'] === $app->getUserId()) {
+        if (intval($recipe['user_id']) === $app->getUserId()) {
             $steps->update($id, $stepName, $details, $orderIndex);
             header("Location: ../../edit?recipe_id=" . $step['recipe_id']);
             exit;

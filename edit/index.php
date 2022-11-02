@@ -44,8 +44,8 @@ if (isset($recipe['id'])) {
         exit;
     }
 
-    $ingredientsArray = $ingredients->getIngredientsFromRecipeId($recipe['id']);
-    $stepsArray = $steps->getStepsFromRecipeId($recipe['id']);
+    $ingredientsArray = $ingredients->getIngredientsFromRecipeId(intval($recipe['id']));
+    $stepsArray = $steps->getStepsFromRecipeId(intval($recipe['id']));
 } else {
     // recipe does not exist
     header("Location: ../dashboard");

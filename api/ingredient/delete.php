@@ -18,10 +18,10 @@ if (isset($_GET['ingredientId']) && $app->getIsSignedIn()) {
     $ingredient = $ingredients->getIngredient($id);
 
     if (isset($ingredient['id'])) {
-        $recipe = $recipes->getRecipe($ingredient['recipe_id']);
+        $recipe = $recipes->getRecipe(intval($ingredient['recipe_id']));
 
         if (isset($recipe['id'])) {
-            if ($recipe['user_id'] === $app->getUserId()) {
+            if (intval($recipe['user_id']) === $app->getUserId()) {
                 $ingredients->delete($id);
                 header("Location: ../../edit?recipe_id=" . $ingredient['recipe_id']);
                 exit;
