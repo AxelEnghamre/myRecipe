@@ -25,11 +25,11 @@ if (isset($_GET['recipe_id'])) {
 
     if (isset($recipe['id'])) {
         // Define vars to use from the recipe
-        $recipeId = $recipe['id'];
+        $recipeId = intval($recipe['id']);
         $title = $recipe['name'];
         $short_description = $recipe['short_description'];
         $description = $recipe['description'];
-        $ownerId = $recipe['user_id'];
+        $ownerId = intval($recipe['user_id']);
 
         // Get all recipe steps
         $stepsArray = $steps->getStepsFromRecipeId($recipeId);
