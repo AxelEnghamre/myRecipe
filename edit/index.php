@@ -66,29 +66,35 @@ if (isset($recipe['id'])) {
     <title>edit</title>
 </head>
 
-<body class="bg-lemon-milk p-4 pt-16">
-    <a href="/dashboard/" class="fixed top-8 right-4 text-lg">exit</a>
+<body class="bg-lemon-milk p-4 pt-6">
+    <a href="/dashboard/" class="fixed top-6 right-4 text-xl text-warning z-50">exit</a>
 
-    <?php
-    updateRecipe($recipe);
-    ?>
+    <main class="max-w-2xl ml-auto mr-auto flex flex-col gap-10">
+        <h1 class="text-3xl">Edit</h1>
+        <section>
+            <h2 class="text-2xl">Recipe</h2>
+            <?php
+            updateRecipe($recipe);
+            ?>
+        </section>
 
-    <section>
-        <h2>Ingredients</h2>
-        <?php
-        createIngredient($recipe);
-        updateIngredients($ingredientsArray);
-        ?>
-    </section>
+        <section>
+            <h2 class="text-2xl">Ingredients</h2>
+            <?php
+            createIngredient($recipe);
+            updateIngredients($ingredientsArray);
+            ?>
+        </section>
 
 
-    <section>
-        <h2>Steps</h2>
-        <?php
-        createStep($recipe);
-        updateSteps($stepsArray);
-        ?>
-    </section>
+        <section>
+            <h2 class="text-2xl">Steps</h2>
+            <?php
+            createStep($recipe);
+            updateSteps($stepsArray);
+            ?>
+        </section>
+    </main>
 
 </body>
 
