@@ -87,16 +87,18 @@ if (isset($_GET['recipe_id'])) {
         <article>
             <h2 class="text-2xl">
                 Ingredients
-                <ul>
-                    <?php
-                    foreach ($ingredientsArray as $ingredient) {
-                        echo "<li>";
-                        echo $ingredient['ingredient'] . " " . $ingredient['amount'] . $ingredient['unit'];
-                        echo "</li>";
-                    }
-                    ?>
-                </ul>
             </h2>
+            <ul>
+                <?php
+                foreach ($ingredientsArray as $ingredient) {
+                ?>
+                    <li>
+                        <?= $ingredient['ingredient'] ?> <?= $ingredient['amount'] ?> <?= $ingredient['unit'] ?>
+                    </li>
+                <?php
+                }
+                ?>
+            </ul>
         </article>
 
         <article>
