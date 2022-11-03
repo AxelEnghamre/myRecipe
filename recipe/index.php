@@ -92,7 +92,7 @@ if (isset($_GET['recipe_id'])) {
                 <?php
                 foreach ($ingredientsArray as $ingredient) {
                 ?>
-                    <li>
+                    <li class="w-full rounded-xl bg-coffee p-2 text-cream">
                         <?= $ingredient['ingredient'] ?> <?= $ingredient['amount'] ?> <?= $ingredient['unit'] ?>
                     </li>
                 <?php
@@ -108,9 +108,11 @@ if (isset($_GET['recipe_id'])) {
             <ol>
                 <?php
                 foreach ($stepsArray as $step) {
-                    echo "<li>";
-                    echo $step['step'];
-                    echo "</li>";
+                ?>
+                    <li>
+                        <?= $step['step'] ?>
+                    </li>
+                <?php
                 }
 
                 ?>
