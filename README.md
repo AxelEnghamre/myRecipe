@@ -10,6 +10,8 @@ This project uses [tailwind](https://tailwindcss.com) therefore to build a new o
 
 This project needs a mySQL databsae. To connect add a env.php like env.sample.php and insert the values for a new connection.
 
+The project is hosted on [enghamre.com](https://enghamre.com)
+
 # Code Review
 
 Code review written by [Magnus Vargvinter](https://github.com/magnusvv).
