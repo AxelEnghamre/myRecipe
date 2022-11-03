@@ -8,7 +8,7 @@ $app = new app;
 if (isset($_POST['ingredient'], $_POST['amount'], $_POST['unit'], $_POST['recipeId']) && $app->getIsSignedIn()) {
     // this needs to be validated
     $ingredient = $_POST['ingredient'];
-    $amount = $_POST['amount'];
+    $amount = floatval($_POST['amount']);
     $unit = $_POST['unit'];
     $recipeId = intval($_POST['recipeId']);
 
